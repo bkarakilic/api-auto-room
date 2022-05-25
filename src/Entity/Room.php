@@ -49,6 +49,11 @@ class Room
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Appartement::class, inversedBy="room")
+     */
+    private $appartement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +127,18 @@ class Room
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getAppartement(): ?Appartement
+    {
+        return $this->appartement;
+    }
+
+    public function setAppartement(?Appartement $appartement): self
+    {
+        $this->appartement = $appartement;
 
         return $this;
     }
